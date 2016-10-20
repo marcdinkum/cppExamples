@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -I/usr/local/include -Wall
 
-all: makeASound
+all: variableSizes
 
-makeASound : main.o
+variableSizes : main.o
 	$(CC) -o $@ $(CFLAGS) main.o
 
 .cpp.o:

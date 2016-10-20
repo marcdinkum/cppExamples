@@ -28,9 +28,9 @@ int main()
   cin >> midiNote;
 
   //check if entered value is a valid MIDInote value
-  if(midiNote < 0 && midiNote > 119) {
+  if(midiNote < 0 || midiNote > 119) {
     cout << "You entered an incorrect MIDInote value.\n";
-    cout << "Please re-run the programm and try again.";
+    cout << "Please re-run the programm and try again.\n";
     //exit the programm
     return 0;
   }

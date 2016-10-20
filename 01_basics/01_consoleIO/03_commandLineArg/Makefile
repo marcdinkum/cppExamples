@@ -7,7 +7,7 @@ commandLineArg: commandLineArg.o
 	$(CC) -o $@ $(CFLAGS) commandLineArg.o
 
 .cpp.o:
-	$(CC) -c $< $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)cd
 
 clean:
 	rm -f *.o

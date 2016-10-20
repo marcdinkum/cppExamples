@@ -1,10 +1,10 @@
 CC = g++
 CFLAGS = -I/usr/local/include -Wall
 
-all: main
+all: makeASound
 
-main : main.o
-	$(CC) -o $@ $(CFLAGS) main.o 
+makeASound : main.o
+	$(CC) -o $@ $(CFLAGS) main.o
 
 .cpp.o:
 	$(CC) -c $< $(CFLAGS)

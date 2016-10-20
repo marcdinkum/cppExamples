@@ -12,6 +12,6 @@ int main()
   //M&T version of "Hello World"
   cout << "Ding" << endl;
 
-  //end the programm
+  //exit the programm
   return 0;
 }

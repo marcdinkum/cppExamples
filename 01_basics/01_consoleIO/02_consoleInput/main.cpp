@@ -18,6 +18,6 @@ int main()
   //echo the soundDescription
   cout << "You hear a soft \"" << soundDescription << "\"" << endl;
 
-  //end the programm
+  //exit the programm
   return 0;
 }

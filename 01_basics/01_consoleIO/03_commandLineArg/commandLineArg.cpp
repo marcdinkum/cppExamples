@@ -17,6 +17,6 @@ int main(int argc, char **argv) {
     cout  << argv[i] << std::endl;
   }
 
-  //end the programm
+  //exit the programm
   return 0;
 };

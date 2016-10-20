@@ -1,4 +1,4 @@
-**C++ examples and exercise**
+**C++ examples and exercises**
 
 This project makes use of git submodules.
 

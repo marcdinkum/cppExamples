@@ -1,5 +1,13 @@
 /*
-source: http://www.learncpp.com/cpp-tutorial/23-variable-sizes-and-the-sizeof-operator/
+  source: http://www.learncpp.com/cpp-tutorial/23-variable-sizes-and-the-sizeof-operator/
+*/
+
+/*
+  the quote below is from Lynda.com
+  https://www.lynda.com/C-tutorials/Understanding-data-types/
+  When choosing a data type, try to choose the smallest possible type
+  to hold the data values. This reduces the amount of memory,
+  and increases the processing speed of our program.
 */
 
 #include <iostream>

@@ -1,14 +1,13 @@
 CC = g++
-CFLAGS = -I/usr/local/include -Wall
 
 all: makeASound
 
 makeASound : main.o
-	$(CC) -o $@ $(CFLAGS) main.o
+	$(CC) -o $@ main.o
 
 .cpp.o:
-	$(CC) -c $< $(CFLAGS)
+	$(CC) -c $<
 
 clean:
 	rm -f *.o
-	rm -f `find . -perm +111 -type f`
+	rm -f makeASound

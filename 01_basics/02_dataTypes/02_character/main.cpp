@@ -27,6 +27,8 @@ int main()
 {
   //declare the variables
   int noteIndex;
+
+
   const char majorScaleC[] = {'c', 'd', 'e', 'f', 'g', 'a', 'b'};
 
   //ask user for a number from 1 till 7

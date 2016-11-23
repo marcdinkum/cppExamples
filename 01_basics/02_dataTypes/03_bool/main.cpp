@@ -17,7 +17,7 @@ using namespace std;
 int main()
 {
   //declare and initiate variables
-  int Interval, guessedInterval, minInterval, maxInterval;
+  int interval, guessedInterval, minInterval, maxInterval;
   bool correctAnswer = false;
   const char majorScaleC[] = {'c', 'd', 'e', 'f', 'g', 'a', 'b'};
 
@@ -27,7 +27,7 @@ int main()
 
   /* initialize random seed: */
   srand (time(NULL));
-  Interval = minInterval + (rand() % (int)(maxInterval - minInterval + 1));
+  interval = minInterval + (rand() % (int)(maxInterval - minInterval + 1));
 
   while(!correctAnswer) {
     cout << endl << "**** GUESS THE NOTE DISTANCE ****" << endl << endl;

@@ -11,7 +11,7 @@ public:
   Instrument(std::string aSound);
 
   void makeSound();
-  //setter and getter function - aSound field
+  //setter and getter function
   void setSound(std::string aSound);
   std::string getSound();
 

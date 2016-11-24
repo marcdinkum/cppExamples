@@ -8,7 +8,7 @@ class Instrument {
 public:
 //__ member functions a.k.a. methods __
   void makeSound();
-  //setter and getter function - aSound field
+  //setter and getter function - sound field
   void setSound(std::string aSound);
   std::string getSound();
 

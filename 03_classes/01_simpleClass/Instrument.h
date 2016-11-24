@@ -6,10 +6,10 @@
 //class declaration
 class Instrument {
 public:
-  //member functions a.k.a. methods
+//__ member functions a.k.a. methods __
   void makeSound();
 
-  //member variables a.k.a. fields
+//__ member variables a.k.a. fields __
   std::string sound;
 };
 //NOTE: always use a semicolon at end of class declaration

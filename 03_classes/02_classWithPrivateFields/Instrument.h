@@ -6,16 +6,17 @@
 //class declaration
 class Instrument {
 public:
-  //member functions a.k.a. methods
+//__ member functions a.k.a. methods __
   void makeSound();
+  //setter and getter function - aSound field
   void setSound(std::string aSound);
   std::string getSound();
 
 private:
-  //member variables a.k.a. fields
+//__ member variables a.k.a. fields __
   std::string sound;
 };
-//NOTE: always use a semicolon at end of class declaration
+
 
 
 

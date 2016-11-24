@@ -3,7 +3,7 @@
 Instrument::Instrument() {
   std::cout << "______ Instrument - ";
   std::cout << "inside constructor Instrument()\n";
- }
+}
 
 Instrument::Instrument(std::string aSound) {
   std::cout << "______ Instrument - ";

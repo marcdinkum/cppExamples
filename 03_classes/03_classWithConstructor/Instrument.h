@@ -3,7 +3,6 @@
 
 #include <iostream>
 
-//class declaration
 class Instrument {
 public:
   //constructor

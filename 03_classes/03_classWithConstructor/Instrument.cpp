@@ -1,9 +1,5 @@
 #include "Instrument.h"
 
-
-/*
- * @constructor Instrument
- */
  Instrument::Instrument() {
    std::cout << "______ Instrument " ;
    std::cout << "- inside constructor Instrument()\n";

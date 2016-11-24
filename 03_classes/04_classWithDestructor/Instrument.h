@@ -3,12 +3,9 @@
 
 #include <iostream>
 
-//class declaration
 class Instrument {
 public:
-  //default constructor
   Instrument();
-  //overloaded constructor
   Instrument(std::string aSound);
   //destructor
   ~Instrument();

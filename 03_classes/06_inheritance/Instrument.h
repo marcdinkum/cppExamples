@@ -6,10 +6,12 @@
 class Instrument {
 public:
   void makeSound();
-  //setter and getter function - aSound field
-  void setSound(std::string aSound);
+
+  //getters and setters
+  void setSound(std::string sound);
   std::string getSound();
-  std::string & playablePart();
+  void setPlayablePart(std::string playablePart);
+  std::string getPlayablePart();
 
 //a base class protected member will be accessible for a derived class
 protected:
@@ -24,12 +26,8 @@ protected:
   ~Instrument();
 
 private:
-  /*
-   * giving a leading underscore to private data members is a convention
-   * that is used by some programmers to remind you they are private
-   */
-  std::string _sound;
-  std::string _playablePart;
+  std::string sound;
+  std::string playablePart;
 };
 
 

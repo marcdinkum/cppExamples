@@ -1,8 +1,8 @@
 CC = g++ -g
 
-all: instrument
+all: stringInstrument
 
-instrument: Instrument.o StringInstrument.o main.o
+stringInstrument: Instrument.o StringInstrument.o main.o
 	$(CC) -o $@ Instrument.o StringInstrument.o main.o
 
 .cpp.o:
@@ -10,4 +10,4 @@ instrument: Instrument.o StringInstrument.o main.o
 
 clean:
 	rm -f *.o
-	rm -f instrument
+	rm -f stringInstrument

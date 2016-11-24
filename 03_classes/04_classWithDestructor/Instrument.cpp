@@ -1,27 +1,23 @@
 #include "Instrument.h"
 
-
-/*
- * @constructor Instrument
- */
- Instrument::Instrument() {
-   std::cout << "______ Instrument - ";
-   std::cout << "inside constructor Instrument()\n";
+Instrument::Instrument() {
+  std::cout << "______ Instrument - ";
+  std::cout << "inside constructor Instrument()\n";
  }
 
- Instrument::Instrument(std::string aSound) {
-   std::cout << "______ Instrument - ";
-   std::cout << "inside constructor Instrument(std::string aSound)\n";
-   sound = aSound;
- }
+Instrument::Instrument(std::string aSound) {
+  std::cout << "______ Instrument - ";
+  std::cout << "inside constructor Instrument(std::string aSound)\n";
+  sound = aSound;
+}
 
- //the deconstructor will be called when object is destroyed
- //can be used to free up memory that was used to create the object
- //or e.g. close an output file
- Instrument::~Instrument() {
-    std::cout << "______ Instrument - ";
-    std::cout << "inside destructor\n";
- }
+//the deconstructor will be called when object is destroyed
+//can be used to free up memory that was used to create the object
+//or e.g. close an output file
+Instrument::~Instrument() {
+  std::cout << "______ Instrument - ";
+  std::cout << "inside destructor\n";
+}
 
 void Instrument::makeSound() {
   std::cout << "A sound is produced: \"";

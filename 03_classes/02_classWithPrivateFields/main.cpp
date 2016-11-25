@@ -1,5 +1,22 @@
 #include "Instrument.h"
 
+
+/*
+ * The class Instrument contains the private field sound.
+ * A private field cannot be accesed or viewed from outside the class.
+ * Only the class itself (and friends) can acces private members.
+ *
+ * ------ HANDS-ON TIPS ------
+ * • Try accessing the field 'sound' directly inside the main function:
+ * myInstrument.sound;
+ * And before running make, what do you expect to happen?
+ *
+ * • Move the field 'sound' below the 'public' acces specifier. Can you acces
+ * it directly from the main?
+ * ---------------------------
+ */
+
+
 int main() {
   //create an Instrument object
   Instrument myInstrument;

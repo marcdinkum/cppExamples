@@ -5,7 +5,7 @@
 
 class Instrument {
 public:
-  //constructor
+  //default constructor (different from the implicit default constructor)
   Instrument();
   //it is possible to overload the constructor to allow setting aSound string
   Instrument(std::string aSound);

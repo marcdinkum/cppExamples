@@ -2,7 +2,8 @@
 #include <bear/Audio/Output.hpp>
 #include "Sine.h"
 /*
-* TODO -> move code in main function to Audio class, with an active signal (pointer)
+ * NOTE: example is not finished yet, but working.
+ * TODO -> move code in main function to Audio class, with an active signal (pointer)
  * TODO - add explenation + HANDSON TIPS
  */
 

@@ -38,7 +38,11 @@
  *
  * • Can you add a pointer and let it point to the pointer 'aPointer'?
  *
- * • if above works, try out the following:
+ * • if above works, try out the following, create a program that contains:
+ *  - one pointer (pointer 1) that points to an integer
+ *  - a second pointer (pointer 2) that points to a different type of variable
+ *  - a third pointer (pointer 3) that can point to pointer 1, but can also be
+ *    asigned to pointer 3
  *
  * ---------------------------
  */

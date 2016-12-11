@@ -12,7 +12,6 @@ public:
 
   void setFreq(float freq);
   float getFreq();
-  double getPhase();
 
 protected:
   float freq;

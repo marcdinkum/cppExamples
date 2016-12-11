@@ -1,9 +1,9 @@
 CC = g++ -g
 CFLAGS = -std=c++1z
 
-all: synth
+all: lambda
 
-synth: main.o
+lambda: main.o
 	$(CC) -o $@ $(CFLAGS) main.o
 
 .cpp.o:
@@ -11,4 +11,4 @@ synth: main.o
 
 clean:
 	rm -f *.o
-	rm -f synth
+	rm -f lambda

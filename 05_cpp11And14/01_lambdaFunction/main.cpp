@@ -30,6 +30,13 @@ int main() {
     std::cout << '_' << i;
   });
 
+  //store a lambda function
+  auto showMultiply = [](int a, int b) {
+    std::cout << a * b;
+  };
+  std::cout << std::endl << std::endl;
+  showMultiply(2, 7);
+
   //end program
   std::cout << std::endl;
   return 0;

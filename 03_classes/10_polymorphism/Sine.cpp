@@ -2,7 +2,7 @@
 
 Sine::Sine(float freq) : Signal(freq) {}
 
-void Sine::process(float* output, int frameCount, int sampleRate) {
+void Sine::process(float* const* const outputs, size_t channelCount, size_t frameCount, int sampleRate) {
   for (int frame = 0; frame < frameCount; ++frame)
   {
     // Generate the new output sample
@@ -13,6 +13,9 @@ void Sine::process(float* output, int frameCount, int sampleRate) {
     if (phase >= 2 * M_PI)
       phase -= 2 * M_PI;
 
-    output[frame] = sample;
+    // Iterate over the channels
+    for (auto channel = 0; channel < channelCount; ++channel) {
+      outputs[channel][frame] = sample * 0.4;
+    }
   }
 }

@@ -7,12 +7,10 @@ public:
   Signal(float freq = 0);
   virtual ~Signal();
 
-  // a pure virtual function
-  virtual void process(float* output, int frameCount, int sampleRate) = 0;
+  virtual void process(float* const* const outputs, size_t channelCount, size_t frameCount, int sampleRate) = 0;
 
   void setFreq(float freq);
   float getFreq();
-  double getPhase();
 
 protected:
   float freq;

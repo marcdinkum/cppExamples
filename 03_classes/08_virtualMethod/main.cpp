@@ -2,6 +2,7 @@
 
 
 /*
+ * NOTE: Checkout out example 04_dynamic/01_simplePointer first 
  * TODO - add explenation + HANDSON TIPS
  */
 int main() {

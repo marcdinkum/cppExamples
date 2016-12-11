@@ -3,7 +3,7 @@ CFLAGS = -std=c++1z
 
 all: lambda
 
-lambda: main.o
+synth: main.o
 	$(CC) -o $@ $(CFLAGS) main.o
 
 .cpp.o:

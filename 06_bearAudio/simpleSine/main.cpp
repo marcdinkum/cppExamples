@@ -1,4 +1,3 @@
-#include <bear/Audio/File.hpp>
 #include <bear/Audio/Output.hpp>
 #include <iostream>
 #include <cmath>
@@ -40,6 +39,9 @@ int main(int argc, const char * argv[]) {
     for (auto frame = 0; frame < frameCount; ++frame)
     {
       //Generate the new output sample
+      //TODO - make static example project
+      //static double phase -> phase is global but only visible inside scope of
+      //this forloop.
       static double phase = 0;
       auto sample = sin(phase);
 

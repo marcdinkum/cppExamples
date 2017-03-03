@@ -1,13 +1,13 @@
 CC = g++ -g
 
-all: sum
+all: point
 
-sum: Point.o main.o
-	$(CC) -o $@ Point.o main.o
+point: main.o
+	$(CC) -o $@ main.o
 
 .cpp.o:
 	$(CC) -c $<
 
 clean:
 	rm -f *.o
-	rm -f sum
+	rm -f point

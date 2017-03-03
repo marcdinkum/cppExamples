@@ -12,7 +12,12 @@ public:
 protected:
   Instrument(std::string name);
   //destructor
-  ~Instrument();
+  /*
+   * when a class contains a virtual method -> use virtual destructor,
+   * to make sure that when deleting an object with pointer to base class
+   * the child's constructor gets called as well!
+   */
+  virtual ~Instrument();
 
 private:
   std::string name;

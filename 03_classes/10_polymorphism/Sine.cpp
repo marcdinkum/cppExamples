@@ -9,9 +9,9 @@ void Sine::process(float* const* const outputs, size_t channelCount, size_t fram
     auto sample = sin(phase);
 
     // Increase the phase for next round
-    phase += freq / sampleRate * 2 * M_PI;
-    if (phase >= 2 * M_PI)
-      phase -= 2 * M_PI;
+    phase += freq / sampleRate * twoPi;
+    if (phase >= twoPi)
+      phase -= twoPi;
 
     // Iterate over the channels
     for (auto channel = 0; channel < channelCount; ++channel) {

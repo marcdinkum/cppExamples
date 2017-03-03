@@ -1,12 +1,21 @@
 #include "Instrument.h"
 
-
 /*
- * The class Instrument contains the private field sound.
- * A private field cannot be accesed or viewed from outside the class.
- * Only the class itself (and friends) can acces private members.
+ * Inside a class declaration, you can use the access specifiers 'public',
+ * 'protected' and 'private' to set the acces restriction of class members.
+ * - public, is accesible from anywhere outside the class
+ * - private, cannot be accesed or viewed from outside the class. Only the class
+ * itself (and friends) can acces private members
+ * - protected, same as private, but can also be accessed from derived classes
+ *
  *
  * ------ HANDS-ON TIPS ------
+ * • Why would you want to add a public method to a class to set / get a
+ * private field?
+ *
+ * • Add a class that inheriteds from Instrument. Try to access the protected
+ * and private fields fromout this derived class.
+ *
  * • Try accessing the field 'sound' directly inside the main function:
  * myInstrument.sound;
  * And before running make, what do you expect to happen?

@@ -4,6 +4,7 @@
 AudioManager::AudioManager(Subject* subject) {
   //create effects and add these to effectChain
   effectChain[0] = new Delay();
+  subject->attach(effectChain[0]);
 }
 
 

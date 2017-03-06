@@ -8,11 +8,7 @@ public:
   AudioManager(Subject* subject);
   ~AudioManager();
 
-  //example test method (instead of proper using audio callback)
-  void audioCallback();
-
-private:
+  //NOTE - this is an example, code below should not be public ofcourse
   static int constexpr numEffects = 1;
-  //TODO change into vector & create seperate vector example
   Effect* effectChain[numEffects];
 };

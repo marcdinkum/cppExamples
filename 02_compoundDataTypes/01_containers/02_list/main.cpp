@@ -20,7 +20,7 @@ int main ()
 
   std::cout << "\n effectChain contains:";
   std::list<Effect*>::iterator it;
-  for((it=effectChain.begin()); (it != effectChain.end()); ++it) {
+  for((it=effectChain.begin()); (it != effectChain.end()); it++) {
     (*it)->process();
   }
 

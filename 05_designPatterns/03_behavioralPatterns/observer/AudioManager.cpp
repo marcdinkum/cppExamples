@@ -1,10 +1,8 @@
 #include "AudioManager.h"
 
-
-AudioManager::AudioManager(Subject* subject) {
+AudioManager::AudioManager(SerialManager* subject) {
   //create effects and add these to effectChain
-  effectChain[0] = new Delay();
-  subject->attach(effectChain[0]);
+  effectChain[0] = new Delay(subject);
 }
 
 

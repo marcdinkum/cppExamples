@@ -8,12 +8,12 @@ void SerialManager::demoValuesChanged() {
   std::cout << "\n-delayAmp ";
   std::cin >> _effectValues.delayAmp;
   std::cout << "\n-delayTimeMS ";
-  std::cin >> _effectValues.delayTimeMS;  
+  std::cin >> _effectValues.delayTimeMS;
   std::cout << "\nValuesChanged -> calling notify method!";
   notify();
 }
 
-float SerialManager::getValues(EffectValueTypes effectValueType) {
+float SerialManager::getEffectValues(EffectValueTypes effectValueType) {
   std::cout <<  "\n\n_____ SerialManager - inside getValues method - " <<
                 "passed parameter effectValueType is ";
   switch(effectValueType) {

@@ -1,5 +1,7 @@
 #include "Delay.h"
 
+Delay::Delay(SerialManager* subject) : Effect(subject) {};
+
 void Delay::process(/*float* buffer, int numFrames*/) {
   std::cout << "\n_____ Delay - inside process method\n";
 }
@@ -25,12 +27,10 @@ void Delay::setDelayTimeMS(float delayTimeMS) {
 
 void Delay::update(Subject* subject) {
   std::cout << "\n_____ Delay - inside update method - \n";
-  //cast subject to EffectValuesSubject type
-  EffectValuesSubject* effectValuesSubject = static_cast<EffectValuesSubject*>(subject);
   //retrieve and set drywet value
-  dryWet = effectValuesSubject->getValues(EffectValueTypes::DelayDryWet);
+  dryWet = _subject->getEffectValues(EffectValueTypes::DelayDryWet);
   //retrieve and set amp value
-  amp = effectValuesSubject->getValues(EffectValueTypes::DelayAmp);
+  amp = _subject->getEffectValues(EffectValueTypes::DelayAmp);
   //retrieve and set delayTime value
-  setDelayTimeMS(effectValuesSubject->getValues(EffectValueTypes::DelayTimeMS));
+  setDelayTimeMS(_subject->getEffectValues(EffectValueTypes::DelayTimeMS));
 }

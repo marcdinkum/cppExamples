@@ -1,11 +1,11 @@
-#include "Effect.h"
-#include "Subject.h"
-
 #ifndef DELAY_H
 #define DELAY_H
 
+#include "Effect.h"
+
 class Delay : public Effect {
 public:
+  Delay(SerialManager* subject);
   void process(/*float* buffer, int numFrames*/);
   //override Observer update method
   void update(Subject* subject);

@@ -1,9 +1,11 @@
-#include <iostream>
-#include "Subject.h"
-#include "EffectValuesSubject.h"
-
 #ifndef SERIALMANAGER_H
 #define SERIALMANAGER_H
+
+#include <iostream>
+#include "Subject.h"
+
+
+enum class EffectValueTypes { DelayDryWet, DelayAmp, DelayTimeMS};
 
 struct EffectValues{
   float delayDryWet = 0.0f;
@@ -11,10 +13,15 @@ struct EffectValues{
   float delayAmp = 0.0f;
 };
 
-class SerialManager : public EffectValuesSubject{
+class SerialManager : public Subject{
 public:
   void demoValuesChanged();
-  float getValues(EffectValueTypes effectValueType);
+
+  /*
+   * NOTE - method below can also be placed in a seperate interface
+   * Effect can include this interface class instead of SerialManager.h,
+   */
+  float getEffectValues(EffectValueTypes effectValueType);
 
 private:
   EffectValues _effectValues;

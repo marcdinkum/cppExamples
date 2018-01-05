@@ -135,25 +135,18 @@ int JackModule::_wrap_jack_process_cb(jack_nframes_t nframes,void *arg)
 
 int JackModule::onProcess(jack_nframes_t nframes)
 {
-  /* in and out are seen from JACK's perspective
-   * meaning that
-   *    (audio input)
-   *  - samples are read from the input and written into the input ringbuffer
-   *
-   *    (audio output)
-   *  - samples are read from the output ringbuffer and written to the output
-   */
-  void *in = jack_port_get_buffer(input_port,nframes);
-  void *out = jack_port_get_buffer(output_port,nframes);
+  // retrieve in and out buffers
+  jack_default_audio_sample_t *inBuf = (jack_default_audio_sample_t *)jack_port_get_buffer(input_port,nframes);
+  jack_default_audio_sample_t *outBuf = (jack_default_audio_sample_t *)jack_port_get_buffer(output_port,nframes);
 
   static double phase=0;
   static double outputSample;
   static double samplerate = getSamplerate();
 
   for(int i = 0; i < nframes; i++) {
-    outputSample = 0.4*sin(phase);
-    phase += 880*2*M_PI/samplerate;
-    ((jack_default_audio_sample_t *)out)[i] = outputSample;
+    outputSample = 0.4 * sin(phase);
+    phase += 880 * 2 * M_PI / samplerate;
+    outBuf[i] = outputSample;
   }
 
   return 0;

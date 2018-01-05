@@ -2,6 +2,9 @@
 
 
 /*
+* With a pointer you can store a reference to a function.
+* Instead of using a pointer you can also store a function reference in
+* a std::function wrapper. See example "\03_functions\x_functionWrapper"
 * ------ HANDS-ON TIPS ------
 * • Create another function that returns an int and takes 1 int as parameter.
 *   Assign this new function to the alternateNumber function pointer.

@@ -2,7 +2,7 @@
 
 
 /*
-See also example "\04_dynamicMemory\04_pointerToFunction"
+See also example "\02_compoundDataTypes\02_pointers\04_pointerToFunction"
 
 quote from http://en.cppreference.com/w/cpp/utility/functional/function:
 (since C++11)

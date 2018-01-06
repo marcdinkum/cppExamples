@@ -1,9 +1,9 @@
 CC = g++
 CFLAGS = -I/usr/local/include -Wall -std=c++1z
 
-all: functionWrapper
+all: example
 
-functionWrapper : main.o
+example : main.o
 	$(CC) -o $@ $(CFLAGS) main.o
 
 .cpp.o:
@@ -11,4 +11,4 @@ functionWrapper : main.o
 
 clean:
 	rm -f *.o
-	rm -f functionWrapper
+	rm -f example

@@ -37,8 +37,6 @@ int main()
   std::cout << "Created an unsigned int variable, containing the value: "
     << anotherNumber << "\n";
 
-
-
   //end program
   return 0;
 } //main

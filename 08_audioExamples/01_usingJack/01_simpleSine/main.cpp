@@ -4,6 +4,7 @@
 #include "math.h"
 #include "unistd.h"
 
+#define PI_2 6.28318530717959
 
 
 JackModule jack;
@@ -18,13 +19,13 @@ int main(int argc,char **argv)
   jack.onProcess = [](jack_default_audio_sample_t *inBuf,
      jack_default_audio_sample_t *outBuf, jack_nframes_t nframes, double samplerate) {
 
-    static double phase=0;
-    jack_default_audio_sample_t outputSample;
+    static double phase = 0;
+    static double amplitude = 0.5;
+    static double frequency = 880;
 
     for(int i = 0; i < nframes; i++) {
-      outputSample = 0.4 * sin(phase);
-      phase += 880 * 2 * M_PI / samplerate;
-      outBuf[i] = outputSample;
+      outBuf[i] = amplitude * sin(phase);
+      phase += frequency * PI_2 / samplerate;
     }
 
     return 0;

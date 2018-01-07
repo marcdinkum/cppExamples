@@ -17,10 +17,11 @@ int main(int argc,char **argv)
   Sine sine(jack.getSamplerate(), 220, 0);
   //assign a function to the JackModule::onProces
   jack.onProcess = [&sine](jack_default_audio_sample_t *inBuf,
-     jack_default_audio_sample_t *outBuf, jack_nframes_t nframes, double samplerate)
+     jack_default_audio_sample_t *outBuf, jack_nframes_t nframes)
   {
     //loop through frames, retrieve sample of sine per frame
     for(int i = 0; i < nframes; i++) {
+      //TODO check type of jack_default_audio_sample_t, double? or float?
       outBuf[i] = sine.getSample();
       sine.tick();
     }

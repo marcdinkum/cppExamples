@@ -141,10 +141,8 @@ int JackModule::_wrap_jack_process_cb(jack_nframes_t nframes,void *arg)
   // retrieve in and out buffers
   jack_default_audio_sample_t *inBuf = (jack_default_audio_sample_t *)jack_port_get_buffer(input_port,nframes);
   jack_default_audio_sample_t *outBuf = (jack_default_audio_sample_t *)jack_port_get_buffer(output_port,nframes);
-  // retrieve samplerate
-  static double samplerate = ((JackModule *)arg)->getSamplerate();
   //call the onProcess function, that is assigned to the object
-  return ((JackModule *)arg)->onProcess(inBuf, outBuf, nframes, samplerate);
+  return ((JackModule *)arg)->onProcess(inBuf, outBuf, nframes);
 } // _wrap_jack_process_cb()
 
 

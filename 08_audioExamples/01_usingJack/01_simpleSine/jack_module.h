@@ -1,13 +1,15 @@
 /*
 #
 # 2017 Marc Groenewegen
-# (altered by Ciska Vriezenga)
+# altered by Ciska Vriezenga to serve as a simple example
 #
 */
 
+#ifndef _JACK_MODULE_H_
+#define _JACK_MODULE_H_
+
 #include <string>
 #include <jack/jack.h>
-
 
 class JackModule
 {
@@ -19,11 +21,14 @@ public:
   unsigned long getSamplerate();
   void autoConnect();
   void end();
+  //the onProcess function that needs to be assigned to a JackModule object
+  std::function <int(jack_default_audio_sample_t *,
+     jack_default_audio_sample_t *, jack_nframes_t, double)> onProcess;
+
 private:
   static int _wrap_jack_process_cb(jack_nframes_t nframes,void *arg);
-  int onProcess(jack_nframes_t nframes);
   jack_client_t *client;
   const char **ports;
-  unsigned long frames_pushed;
-  unsigned long frames_popped;
 };
+
+#endif

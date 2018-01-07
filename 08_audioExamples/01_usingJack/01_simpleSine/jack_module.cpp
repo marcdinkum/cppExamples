@@ -1,7 +1,7 @@
 /*
 #
 # 2017 Marc Groenewegen
-# (altered by Ciska Vriezenga)
+# altered by Ciska Vriezenga to serve as a simple example
 #
 */
 
@@ -19,10 +19,7 @@ static jack_port_t *input_port,*output_port;
 
 JackModule::JackModule()
 {
-
 } // JackModule()
-
-
 
 JackModule::~JackModule()
 {
@@ -39,9 +36,21 @@ int JackModule::init()
 
 int JackModule::init(std::string clientName)
 {
+  //check if a function is assigned to onProcess
+  if(!onProcess) {
+    std::cout << "\n_____ EXIT PROGRAM _____\n"
+      << "The onProcess method is unassigned.\n"
+      << "You need to assign a (lambda) function to JackModule::onProcess.\n"
+      << "JackModule.onProcess will be called by the jack callback function.\n"
+      << "________________________\n\n";
+    exit(1);
+  }
+
   //open an external client session with a JACK server
-  //TODO alter (jack_options_t)0, ->  jack_options_t.JackNullOption
-  client = jack_client_open(clientName.c_str(),(jack_options_t)0,NULL);
+  //options: use JackNullOption or JackNoStartServer
+  //JackNullOption -> Null value to use when no option bits are needed.
+  //JackNoStartServer -> Do not automatically start the JACK server when it is not already running
+  client = jack_client_open(clientName.c_str(),JackNoStartServer,NULL);
   if( client == 0) {
     std::cout <<  "Unable to retrieve a JACK client. \n " <<
                   "Is the JACK server running?" << std::endl;
@@ -129,28 +138,14 @@ void JackModule::end()
 /* allows to use a cpp function for the audio callback function */
 int JackModule::_wrap_jack_process_cb(jack_nframes_t nframes,void *arg)
 {
-  return ((JackModule *)arg)->onProcess(nframes);
-} // _wrap_jack_process_cb()
-
-
-int JackModule::onProcess(jack_nframes_t nframes)
-{
   // retrieve in and out buffers
   jack_default_audio_sample_t *inBuf = (jack_default_audio_sample_t *)jack_port_get_buffer(input_port,nframes);
   jack_default_audio_sample_t *outBuf = (jack_default_audio_sample_t *)jack_port_get_buffer(output_port,nframes);
-
-  static double phase=0;
-  static double outputSample;
-  static double samplerate = getSamplerate();
-
-  for(int i = 0; i < nframes; i++) {
-    outputSample = 0.4 * sin(phase);
-    phase += 880 * 2 * M_PI / samplerate;
-    outBuf[i] = outputSample;
-  }
-
-  return 0;
-} // onProcess()
+  // retrieve samplerate
+  static double samplerate = ((JackModule *)arg)->getSamplerate();
+  //call the onProcess function, that is assigned to the object
+  return ((JackModule *)arg)->onProcess(inBuf, outBuf, nframes, samplerate);
+} // _wrap_jack_process_cb()
 
 
 /*

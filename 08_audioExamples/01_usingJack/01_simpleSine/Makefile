@@ -1,10 +1,10 @@
 CC = g++
 CFLAGS = -I/usr/local/include -Wall -std=c++1z
-LDFLAGS= -lpthread -ljack
+LDFLAGS= -ljack
 
-all: jackTest
+all: example
 
-jackTest : jack_module.o main.o
+example : jack_module.o main.o
 	$(CC) -o $@ $(CFLAGS) jack_module.o main.o $(LDFLAGS)
 
 .cpp.o:
@@ -12,4 +12,4 @@ jackTest : jack_module.o main.o
 
 clean:
 	rm -f *.o
-	rm -f jackTest
+	rm -f example

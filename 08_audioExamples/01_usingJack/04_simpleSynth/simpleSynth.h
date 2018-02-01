@@ -5,8 +5,8 @@
 class SimpleSynth {
 public:
   //constructor
-  SimpleSynth(double samplerate);
-  SimpleSynth(double samplerate, float midiPitch);
+  SimpleSynth(float samplerate);
+  SimpleSynth(float samplerate, float midiPitch);
   //prevent the default constructor to be generated
   SimpleSynth() = delete;
   //destructor
@@ -23,8 +23,8 @@ private:
   void setFrequency(float frequency);
   float mtof(float midiPitch);
 
+  float samplerate;
   float midiPitch;
-  double samplerate;
   Sine sine;
 };
 

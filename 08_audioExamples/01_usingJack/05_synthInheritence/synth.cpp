@@ -1,13 +1,8 @@
 #include "synth.h"
 
 /*---------------- CONSTRUCTORS / DESTRUCTOR ----------------*/
-//constructor - calls the other constructor with midiPitch = 0
-Synth::Synth(double samplerate)
-  : Synth(samplerate, 0) {}
-
-//using 0 as init value for midiPitch and sine frequency value
-Synth::Synth(double samplerate, float midiPitch)
-  : samplerate(samplerate), midiPitch(midiPitch) {}
+Synth::Synth(float samplerate)
+  : samplerate(samplerate), midiPitch(0) {}
 
 //destructor - delete s object, set pointer to nullptr
 Synth::~Synth() {}
@@ -17,9 +12,18 @@ Synth::~Synth() {}
 void Synth::setMidiPitch(float midiPitch)
 {
   //if midiPitch changes less then 1 cents, do not update the midiPitch
-  if(midiPitch < this->midiPitch - 0.005 || midiPitch > this->midiPitch + 0.005){
+  if(midiPitch < (this->midiPitch - 0.005) || midiPitch > (this->midiPitch + 0.005)){
+    std::cout << "\nSynth::setMidiPitch - "
+      << "setting midiPitch:" << midiPitch << "\n";
+    this->midiPitch = midiPitch;
     setFrequency(mtof(midiPitch));
-  }//end if
+  } //end if
+  else {
+    std::cout << "\nSynth::setMidiPitch - "
+      << "new midiPitch is same pitch (rounded at cents)\n"
+      << "current Pitch: " << this->midiPitch
+      << "new pitch: " << midiPitch << "\n";
+  }
 }
 
 //returns the current midiPitch
@@ -28,9 +32,10 @@ float Synth::getMidiPitch()
   return midiPitch;
 }
 
-/*---------------- PRIVATE METHODS ----------------*/
+/*---------------- PROTECTED METHODS ----------------*/
 //set the synth's frequency
-void Synth::setFrequency(float frequency) {
+void Synth::setFrequency(float frequency)
+{
   //do not except frequencies below 0 and above nyquist
   if(frequency > 0 || frequency < 0.5 * samplerate) {
     this->frequency = frequency;

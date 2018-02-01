@@ -7,8 +7,7 @@
 class Synth {
 public:
   //constructor
-  Synth(double samplerate);
-  Synth(double samplerate, float midiPitch);
+  Synth(float samplerate);
   //prevent the default constructor to be generated
   Synth() = delete;
   //destructor
@@ -31,6 +30,8 @@ protected:
   float mtof(float midiPitch);
   float samplerate;
   float frequency;
+
+private:
   float midiPitch;
 };
 

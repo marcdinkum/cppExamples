@@ -2,15 +2,15 @@
 
 /*---------------- CONSTRUCTORS / DESTRUCTOR ----------------*/
 //constructor - calls the other constructor with midiPitch = 0
-SimpleSynth::SimpleSynth(double samplerate)
+SimpleSynth::SimpleSynth(float samplerate)
   : SimpleSynth(samplerate, 0) {}
 
 //using 0 as init value for midiPitch and sine frequency value
-SimpleSynth::SimpleSynth(double samplerate, float midiPitch)
-  : Synth(samplerate, midiPitch), sine(samplerate, 0) {
-    //We need to set midiPitch in derived class,
-    //because of pure virtual updateFrequency method, which will be called
-    //the derived class first needs to be initialized.
+SimpleSynth::SimpleSynth(float samplerate, float midiPitch)
+  : Synth(samplerate), sine(samplerate, 0) {
+    //set midi pitch
+    //(we can't do this is Synth constructor, because its derived class does not
+    //exist yet, which we do need due to the abstract updateFrequency method
     setMidiPitch(midiPitch);
   }
 

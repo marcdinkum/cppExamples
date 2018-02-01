@@ -13,7 +13,7 @@ int main(int argc,char **argv)
   jack.init(argv[0]);
 
   //create a simpleSynth instance
-  SimpleSynth simpleSynth(jack.getSamplerate(), 60);
+  SimpleSynth simpleSynth((float)jack.getSamplerate(), 60);
 
   //assign a function to the JackModule::onProces
   jack.onProcess = [&simpleSynth](jack_default_audio_sample_t *inBuf,

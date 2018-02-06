@@ -31,6 +31,7 @@ void Saw::calculate()
   sample = wPhase * 2 - 1;
 
   //we want to apply smoothing to prevent aliasing
+  //using Polynomial to smooth the corners of the sawwave
   //TODO - add comments to explain
   if(wrappedPhase < phaseIncrement) {
     smoothY = wrappedPhase / phaseIncrement;

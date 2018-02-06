@@ -15,7 +15,13 @@ Saw::~Saw() {}
 //this method contains the sample calculation
 void Saw::calculate()
 {
-  //TODO - use saw function
-  //NOTE sin() method is not the most efficient way to calculate the saw value
-  sample = sin(phase * PI_2 );
+  //NOTE - wPhase
+  //add 0.5 to phase, to allow a regular sawwave
+  //(starting at 0, -> 1, -1 -> 0 )
+  wPhase = phase + 0.5;
+  //we want values between: [0.0, 1.0], so wrap it
+  if(wPhase > 1) wPhase -= 1;
+
+  //calculate the pure sawwave
+  sample = phase * 2 - 1;
 }

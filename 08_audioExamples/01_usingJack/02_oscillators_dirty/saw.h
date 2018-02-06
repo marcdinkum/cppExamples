@@ -22,7 +22,9 @@ public:
   NOTE: we could use a seperate calculate method
   in that case -> overriding getSample is not necessary.
 */
-
+private:
+  //wrapped phase, used to offset the phase 0.5 before calculating sawwave
+  double wPhase;
 
 };
 

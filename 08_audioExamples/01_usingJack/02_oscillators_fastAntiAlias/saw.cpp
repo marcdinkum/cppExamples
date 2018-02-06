@@ -21,8 +21,10 @@ Saw::~Saw() {}
 //this method contains the sample calculation
 void Saw::calculate()
 {
-  //TODO - add comments to explain
+  //add 0.5 to phase, to allow a regular sawwave
+  //(starting at 0, -> 1, -1 -> 0 )
   wPhase = phase + 0.5;
+  //we want values between: [0.0, 1.0], so wrap it
   if(wPhase > 1) wPhase -= 1;
 
   //calculate the pure sawwave

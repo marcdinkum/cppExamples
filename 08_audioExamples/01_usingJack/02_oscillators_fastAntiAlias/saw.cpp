@@ -1,5 +1,5 @@
 #include "saw.h"
-#define PLOT_SAW 0
+#define OUTPUT_SAWWAVE 0
 
 //Constructors and destructor
 Saw::Saw(double samplerate) : Saw(samplerate, 0, 0) {}
@@ -42,9 +42,9 @@ void Saw::calculate()
     smoothY = 0;
   }
   sample -= smoothY;
-#if PLOT_SAW
+#if OUTPUT_SAWWAVE
   static int i = 0;
-  if(i < 1000) std::cout << "\n" << i << "\t" << tempSample - smoothY;
+  if(i < 1000) std::cout << "\n" << i << "\t" << sample;
   i++;
 #endif
 }

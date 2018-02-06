@@ -14,6 +14,7 @@ public:
   //prevent the default constructor to be generated
   Saw() = delete;
 
+protected:
   //override calculate
   //this method contains the sample calculation
   void calculate();
@@ -22,7 +23,14 @@ public:
   NOTE: we could use a seperate calculate method
   in that case -> overriding getSample is not necessary.
 */
-
+private:
+  //values used to calculate the saw wave
+  //phase increment
+  const double phaseIncrement;
+  //
+  double smoothY;
+  //wrapped phase
+  double wPhase;
 
 };
 

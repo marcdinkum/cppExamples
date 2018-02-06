@@ -8,7 +8,12 @@ Saw::Saw(double samplerate, double frequency) :
   Saw(samplerate, frequency, 0) {}
 
 Saw::Saw(double samplerate, double frequency, double phase) :
-  Oscillator (samplerate, frequency, phase) {}
+  Oscillator (samplerate, frequency, phase),
+  phaseIncrement(frequency / samplerate * 5.0),
+  smoothY(0) {
+    //phaseIncrement, using a factor 5, which alters the smoothing.
+    //TODO -> research aliasing with and without this factor
+  }
 
 Saw::~Saw() {}
 
@@ -16,34 +21,28 @@ Saw::~Saw() {}
 //this method contains the sample calculation
 void Saw::calculate()
 {
-  //TODO - clean up static values
-  //TODO - use more proper names
-  static double wrappedPhase = 0;
-  static double tempSample = 0;
+  //TODO - add comments to explain
+  wPhase = phase + 0.5;
+  if(wPhase > 1) wPhase -= 1;
 
-  //* 5 -> alters the smoothing.
-  //TODO -> research aliasing with and without this factor
-  static const double phaseIncrement = frequency / samplerate * 5.0;
-  static double tempX = 0;
+  //calculate the pure sawwave
+  sample = wPhase * 2 - 1;
 
-  wrappedPhase = phase + 0.5;
-  if(wrappedPhase > 1) wrappedPhase -= 1;
-
-  tempSample = wrappedPhase * 2 - 1;
-
+  //we want to apply smoothing to prevent aliasing
+  //TODO - add comments to explain
   if(wrappedPhase < phaseIncrement) {
-    tempX = wrappedPhase / phaseIncrement;
-    tempX = tempX + tempX - tempX * tempX - 1.0;
+    smoothY = wrappedPhase / phaseIncrement;
+    smoothY = smoothY + smoothY - smoothY * smoothY - 1.0;
   } else if (wrappedPhase > 1.0 - phaseIncrement) {
-    tempX = (wrappedPhase - 1.0) / phaseIncrement;
-    tempX = tempX + tempX + tempX * tempX + 1.0;
+    smoothY = (wrappedPhase - 1.0) / phaseIncrement;
+    smoothY = smoothY + smoothY + smoothY * smoothY + 1.0;
   } else {
-    tempX = 0;
+    smoothY = 0;
   }
-  sample = tempSample - tempX;
+  sample -= smoothY;
 #if PLOT_SAW
   static int i = 0;
-  if(i < 1000) std::cout << "\n" << i << "\t" << tempSample - tempX;
+  if(i < 1000) std::cout << "\n" << i << "\t" << tempSample - smoothY;
   i++;
 #endif
 }

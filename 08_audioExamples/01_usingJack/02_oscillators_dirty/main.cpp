@@ -5,6 +5,7 @@
 #include "sine.h"
 #include "saw.h"
 #include "square.h"
+#include "pulse.h"
 
 /*
  * This example plays the sine, saw and square oscillators
@@ -24,16 +25,17 @@ int main(int argc,char **argv)
   jack.init(argv[0]);
 
   //create a Sine instance
-  Square square(jack.getSamplerate(), 220, 0);
+  Pulse pulse(jack.getSamplerate(), 220, 0);
+  pulse.setPulseWidth(0.01);
   //assign a function to the JackModule::onProces
-  jack.onProcess = [&square](jack_default_audio_sample_t *inBuf,
+  jack.onProcess = [&pulse](jack_default_audio_sample_t *inBuf,
      jack_default_audio_sample_t *outBuf, jack_nframes_t nframes)
   {
     //loop through frames, retrieve sample of sine per frame
     for(int i = 0; i < nframes; i++) {
       //TODO check type of jack_default_audio_sample_t, double? or float?
-      outBuf[i] = square.getSample();
-      square.tick();
+      outBuf[i] = pulse.getSample();
+      pulse.tick();
     }
 
     return 0;

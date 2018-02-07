@@ -1,6 +1,6 @@
 #include "square.h"
 
-#define OUTPUT_SQUAREWAVE 1
+#define OUTPUT_SQUAREWAVE 0
 
 //Constructors and destructor
 Square::Square(double samplerate) : Square(samplerate, 0, 0) {}

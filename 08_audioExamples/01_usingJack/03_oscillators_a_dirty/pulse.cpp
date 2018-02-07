@@ -1,6 +1,6 @@
 #include "pulse.h"
 
-#define OUTPUT_PULSEWAVE 1
+#define OUTPUT_PULSEWAVE 0
 
 //Constructors and destructor
 Pulse::Pulse(double samplerate) : Pulse(samplerate, 0, 0) {}

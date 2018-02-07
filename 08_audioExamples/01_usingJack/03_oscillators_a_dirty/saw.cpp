@@ -1,5 +1,5 @@
 #include "saw.h"
-#define OUTPUT_SAWWAVE 1
+#define OUTPUT_SAWWAVE 0
 
 //Constructors and destructor
 Saw::Saw(double samplerate) : Saw(samplerate, 0, 0) {}
@@ -16,7 +16,7 @@ Saw::~Saw() {}
 //this method contains the sample calculation
 void Saw::calculate()
 {
-  //NOTE - creating a pure sine wave -> ALIASING ISSUES!!! 
+  //NOTE - creating a pure sine wave -> ALIASING ISSUES!!!
   //add 0.5 to phase, to allow a regular sawwave
   //(starting at 0, -> 1, -1 -> 0 )
   wPhase = phase + 0.5;

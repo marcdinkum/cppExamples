@@ -6,9 +6,8 @@
 
 int main(int argc,char **argv)
 {
-  //create a JackModule instance
+  // create a JackModule instance
   JackModule jack;
-
 
   // init the jack, use program name as JACK client name
   jack.init(argv[0]);
@@ -20,7 +19,7 @@ int main(int argc,char **argv)
      jack_default_audio_sample_t *outBuf, jack_nframes_t nframes)
   {
     //loop through frames, retrieve sample of sine per frame
-    for(int i = 0; i < nframes; i++) {
+    for(unsigned int i = 0; i < nframes; i++) {
       //TODO check type of jack_default_audio_sample_t, double? or float?
       outBuf[i] = sine.getSample();
       sine.tick();
@@ -29,8 +28,6 @@ int main(int argc,char **argv)
     return 0;
   };
 
-
-  //
   jack.autoConnect();
 
   //keep the program running and listen for user input, q = quit
@@ -38,12 +35,12 @@ int main(int argc,char **argv)
   bool running = true;
   while (running)
   {
-      switch (std::cin.get())
-      {
-          case 'q':
-            running = false;
-            break;
-      }
+    switch (std::cin.get())
+    {
+      case 'q':
+        running = false;
+        break;
+    }
   }
 
   //end the program

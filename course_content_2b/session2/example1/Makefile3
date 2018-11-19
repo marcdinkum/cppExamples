@@ -5,4 +5,4 @@ oscillator: oscillator.o main.o
 	g++ -c $<
 
 clean:
-	/bin/rm -f oscillator *.o
+	rm -f oscillator *.o

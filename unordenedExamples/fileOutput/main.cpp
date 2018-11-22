@@ -17,21 +17,21 @@ bool fileExists(const std::string& filename)
 }
 
 int main (int argc, char **argv) {
-  // retrieve filePath
-  std::string fileName;
+  // retrieve fileName
+  std::string fileNamePrefix;
   if(argc > 1) {
-    fileName = argv[1];
-  } else fileName = "output";
+    fileNamePrefix = argv[1];
+  } else fileNamePrefix = "output";
 
-  std::string fileExtension;
+  std::string fileNameExtension;
   if(argc > 2) {
-    fileExtension = argv[1];
-  } else fileExtension = "txt";
+    fileNameExtension = argv[1];
+  } else fileNameExtension = "txt";
 
-  std::string filePath = fileName + "." + fileExtension;
-  std::cout << "\n" << filePath << "\n";
+  std::string fileName = fileNamePrefix + "." + fileNameExtension;
+  std::cout << "\n" << fileName << "\n";
   // does file already exists?
-  if(fileExists(filePath))
+  if(fileExists(fileName))
   {
     std::cout <<  "\nFile already exists, do you want to overwrite it? y / n?\n";
     std::string answer;
@@ -44,11 +44,11 @@ int main (int argc, char **argv) {
   }
 
   // open file
-  ofstream myfile (filePath);
+  ofstream myfile (fileName);
   if (myfile.is_open())
   {
     // write to file
-    myfile << "Adding the first line to the file.";
+    myfile << "Adding the first line to the file.\n";
     myfile << "Another line.\n";
     myfile.close();
   }

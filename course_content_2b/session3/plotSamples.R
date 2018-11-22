@@ -20,4 +20,5 @@ plot( x = x_indices, y = samples[, 1],
       ylim = y_limits,
       cex.main=1.1) # set size title
 
+abline(h = 0, lty = 1, col = "gray")
 

@@ -1,24 +1,42 @@
-plot(qnorm) # default range c(0, 1) is appropriate here,
-# but end values are -/+Inf and so are omitted.
-plot(qlogis, main = "The Inverse Logit : qlogis()")
-abline(h = 0, v = 0:2/2, lty = 3, col = "gray")
+curve(sin, 0, 2*pi, xname = "t")
+abline(h = 0, lty = 1, col = "gray")
 
-curve(sin, -2*pi, 2*pi, xname = "t")
-curve(tan, xname = "t", add = NA,
-      main = "curve(tan)  --> same x-scale as previous plot")
+samplerate = 44100
+sinewave <- function(x) sin(x * 2*pi / samplerate)
+curve(sinewave, 0, samplerate, xname = "x")
+abline(h = 0, lty = 1, col = "gray")
 
-op <- par(mfrow = c(2, 2))
-curve(x^3 - 3*x, -2, 2)
-curve(x^2 - 2, add = TRUE, col = "violet")
+# Let x indicate the index of a sample,
+# then the equation is as follow.
+# sample =  2 * pi * x / samplerate
+# 
+# and: 
+# phase = x / samplerate 
+# within the interval [0, 1]
+# 
+# Rewriting the equation.
+# sample = 2 * pi * phase
+# 
+# It is therefor sufficient to keep track of the phase 
+# and to increase this at each sample step.
+# phase += 1 / samplerate
+# 
+# To also take the frequency into account, 
+# we can simply add it as follow.
+# phase += frequency / samplerate
 
-## simple and advanced versions, quite similar:
-plot(cos, -pi,  3*pi)
-curve(cos, xlim = c(-pi, 3*pi), n = 1001, col = "blue", add = TRUE)
+frequency <- 2
+curve(sin(2 * pi * frequency * x / samplerate), add = TRUE, col = "violet")
+frequency <- 10
+curve(sin(2 * pi * frequency * x / samplerate), add = TRUE, col = "green")
 
-chippy <- function(x) sin(cos(x)*exp(-x/2))
-curve(chippy, -8, 7, n = 2001)
-plot (chippy, -8, -5)
 
-for(ll in c("", "x", "y", "xy"))
-  curve(log(1+x), 1, 100, log = ll, sub = paste0("log = '", ll, "'"))
-par(op)
+
+
+
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 #set current working directory
 setwd("/Users/ciska/CODE/_cpp/_cppExamples/course_content_2b/session3/")
 
-samples <- read.csv(file="example1_sine/output.csv", header=FALSE)
+samples <- read.csv(file="example2_sine/output.csv", header=FALSE)
 x_indices <- c(0:44099)
 length(x_indices)
 length(samples[])

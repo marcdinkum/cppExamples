@@ -7,16 +7,24 @@ public:
   Melody();
   ~Melody();
 
-  // returns the note at the readIndex
-  // returns -1 when there is no note available
+  /*
+   * getNote()
+   * returns the note at the readIndex
+   * returns -1 when there is no note available
+   */
   int getNote();
-  // adds a note to the melody (only if 'spots' are available)
+  
+  /*
+   * addNote()
+   * adds a note to the melody (only if 'spots' are available)
+   */
   void addNote(int note);
 
 private:
-  // integer array containing the note values
+  // array of ints containing the note values
   int notes[NUM_NOTES];
-  // read and write index
+  
+  // read and write index pointing into the notes array
   int readIndex;
   int writeIndex;
 };
